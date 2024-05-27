@@ -1,0 +1,23 @@
+{{media_url}}
+
+{% for i in data %}
+<div style="height: 300px; width: 300px; border: 5px solid black">
+    <div style="justify-content: center; align-items: center; margin-left: 50px;">
+<img style="width: 100px; height: 100px;" src="{{media_url}}{{i.Img}}" alt="">
+<br>
+<br>
+{{i.Name}}
+<br>
+<br>
+{{i.Desc}}
+<br>
+<br>
+{{i.Ammt}}
+<br>
+<br>
+<button><a href="{% url 'addTocart' pk=i.id %}">ADD TO CART</a></button>
+
+
+{%endfor%}
+</div>
+</div>
