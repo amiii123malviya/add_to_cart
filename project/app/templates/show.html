@@ -1,8 +1,8 @@
 {{media_url}}
 
 {% for i in data %}
-<div style="height: 300px; width: 300px; border: 5px solid black">
-    <div style="justify-content: center; align-items: center; margin-left: 50px;">
+<div style="height: 250px; width: 300px; border: 5px solid black">
+    <div style="justify-content: center; align-items: center; ">
 <img style="width: 100px; height: 100px;" src="{{media_url}}{{i.Img}}" alt="">
 <br>
 <br>
@@ -15,6 +15,7 @@
 {{i.Ammt}}
 <br>
 <br>
+<input type="number" name="quantity" placeholder="Enter Quantity">
 <button><a href="{% url 'addTocart' pk=i.id %}">ADD TO CART</a></button>
 
 

@@ -6,6 +6,7 @@ class Form(models.Model):
     Desc=models.CharField(max_length=250)
     Img=models.ImageField(upload_to='images/')
     Ammt=models.IntegerField()
+    
 
     class Meta():
         db_table='Form'

@@ -26,20 +26,27 @@ def register(request):
 
 
 def showdata(request):
-    data = Form.objects.all()  # Retrieve the instance you want to display
+    data = Form.objects.all()   
     return render(request, 'show.html', {'data': data,'media_url':MEDIA_URL})
 
 def addTocart(request,pk):
-    if request.method=='POST':  
-        addToCart=request.session.get('addTocart',[])
-        addToCart=[]
-        addToCart.append(pk)
-        print(addToCart)
-        request.session['addToCart']=addToCart
-        form=CartForm()
-        data=Form.objects.all()
+    print(pk)
+    print(request)
+    cart=request.session.get('cart',[])
+    if pk not in cart:
+        cart.append(pk)
+        print(cart)        
+        request.session['cart']=cart
+    print(len(cart))
+    data=Form.objects.all()
+    print(data)
+    return render(request,'show.html',{'data':data,'media_url':MEDIA_URL})
 
-        return render(request,'show.html',{'form':form,'data':data})
+def cart(request):
+    cart=request.session.get('cart',[])
+    print(cart)
+
+
 
 
 
