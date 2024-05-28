@@ -40,11 +40,25 @@ def addTocart(request,pk):
     print(len(cart))
     data=Form.objects.all()
     print(data)
-    return render(request,'show.html',{'data':data,'media_url':MEDIA_URL})
+    return render(request,'cart.html',{'data':data,'media_url':MEDIA_URL})
 
 def cart(request):
-    cart=request.session.get('cart',[])
-    print(cart)
+    cart=request.session.get('cart')
+    details=[]
+    total_price=0
+    for i in cart:
+        data1=Form.objects.get(id=i)
+        con={
+            'nm':data1.Name,
+            'des':data1.Desc,
+            'img':data1.Img,
+            'amt':data1.Ammt
+        }
+        details.append(con)
+        total_price+=data1.Ammt
+    return render(request,'cart.html',{'data1':details,'media_url':MEDIA_URL,'total_price':total_price})
+
+
 
 
 

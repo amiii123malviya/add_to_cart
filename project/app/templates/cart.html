@@ -1,0 +1,21 @@
+<h1>Cart</h1>
+
+{% for i in data1 %}
+<div style="height: 250px; width: 300px; border: 5px solid black">
+    <div style="justify-content: center; align-items: center; ">
+<img style="width: 100px; height: 100px;" src="{{media_url}}{{i.img}}" alt="">
+<br>
+<br>
+{{i.nm}}
+<br>
+<br>
+{{i.des}}
+<br>
+<br>
+{{i.amt}}
+<br>
+<br>
+<input type="number" name="quantity" placeholder="enter Quantity" value="1">
+
+{%endfor%}
+<h2>Total Price:{{total_price}}</h2>
