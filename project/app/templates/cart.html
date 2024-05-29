@@ -17,5 +17,7 @@
 <br>
 <input type="number" name="quantity" placeholder="enter Quantity" value="1">
 
+<button><a href="{% url 'delete' pk=i.id %}">Delete</a></button>
+
 {%endfor%}
 <h2>Total Price:{{total_price}}</h2>

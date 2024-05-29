@@ -41,6 +41,19 @@ def addTocart(request,pk):
     data=Form.objects.all()
     print(data)
     return render(request,'cart.html',{'data':data,'media_url':MEDIA_URL})
+    
+        # quantity = request.session.get('quantity', [])
+        # quantity1 =request.POST.get('quantity')
+        # quantity.append(quantity1)
+        # # print("quantity :",quantity)
+        # request.session['quantity'] = quantity
+        # cart = request.session.get('cart', [])
+        # cart.append(pk)
+        # request.session['cart'] = cart
+        # form = CartForm()
+        # data = Form.objects.all()
+        # return render(request,'cart.html',{'form':form,'data':data})
+        # return redirect('home')
 
 def cart(request):
     cart=request.session.get('cart')
@@ -49,6 +62,7 @@ def cart(request):
     for i in cart:
         data1=Form.objects.get(id=i)
         con={
+            'id':data1.id,
             'nm':data1.Name,
             'des':data1.Desc,
             'img':data1.Img,
@@ -61,8 +75,21 @@ def cart(request):
 
 
 
+def delete(request,id):
+    cart=request.session.get('cart')
+    cart.remove(id)
+    request.session['cart']=cart
+    cart=request.session.get('cart')
+    cart_detail=[]
+    for i in cart:
+        data1=Form.objects.get(id=i)
+        con={
+            'id':data1.id,
+            'nm':data1.Name,
+            'des':data1.Desc,
+            'img':data1.Img,
+            'amt':data1.Ammt
 
-
-
-
-
+        }
+        cart_detail.append(con)
+    return render(request,'cart.html',{'data1':con,'media_url':MEDIA_URL})

@@ -10,3 +10,9 @@ class Form(models.Model):
 
     class Meta():
         db_table='Form'
+
+
+# class Quantity(models.Model):
+#     Quan=models.IntegerField()
+#     Product=models.CharField(max_length=250)
+
